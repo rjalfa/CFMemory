@@ -35,6 +35,9 @@ def run_test(rating_predictor, testset_path, method='explicit_user'):
 			predicted_value = rating_predictor.user_explicit(rating.user_id - 1,rating.movie_id - 1)
 		elif method == 'explicit_item':
 			predicted_value = rating_predictor.item_explicit(rating.user_id - 1,rating.movie_id - 1)
+		elif method == 'significance_weight':
+			predicted_value = rating_predictor.user_significance(rating.user_id - 1,rating.movie_id - 1, 50)
+
 		actual_value = rating.rating
 
 		mean_error += abs(predicted_value-actual_value)
